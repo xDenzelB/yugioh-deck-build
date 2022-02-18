@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, NavLink, } from 'react-router-dom';
-import HomePage from './HomePage';
+import AuthPage from './AuthPage';
 import SearchPage from './SearchPage';
 import CardDeckPage from './CardDeckPage';
 import { getUser, logout } from './services/fetch-utils';
@@ -48,7 +47,7 @@ function App() {
               {
                 currentUser
                   ? <Redirect to='/SearchPage/' />
-                  : <HomePage setCurrentUser={setCurrentUser} />
+                  : <AuthPage setCurrentUser={setCurrentUser} />
               }
             </Route>
             <Route exact path='/SearchPage'>
