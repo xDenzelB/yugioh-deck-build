@@ -43,6 +43,29 @@ function App() {
               </li>
             </ul>
           }
+          <Switch>
+            <Route exact path='/'>
+              {
+                currentUser
+                  ? <Redirect to='/SearchPage/' />
+                  : <HomePage setCurrentUser={setCurrentUser} />
+              }
+            </Route>
+            <Route exact path='/SearchPage'>
+              {
+                !currentUser
+                  ? <Redirect to='/'/>
+                  : <SearchPage />
+              }
+            </Route>
+            <Route exact path='/CardDeckPage'>
+              {
+                !currentUser
+                  ? <Redirect to='/'/>
+                  : <CardDeckPage />
+              }
+            </Route>
+          </Switch>
         </div>
 
       </Router>
