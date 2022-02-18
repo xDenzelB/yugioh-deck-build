@@ -16,9 +16,9 @@ export default function SearchPage() {
   }
 
   async function refreshCardList() {
-      const personalCards = await getCardsList();
+    const personalCards = await getCardsList();
 
-      setCardList(personalCards);
+    setCardList(personalCards);
   }
   return (
     <div>
