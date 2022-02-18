@@ -2,9 +2,13 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
+  const searchName = event.queryStringParameters.name;
+
+  const URL = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${searchName}`;
+
   try {
-    const response = await fetch('https://cat-fact.herokuapp.com/facts');
+    const response = await fetch(URL);
     const data = await response.json();
     const json = JSON.stringify({ data });
     

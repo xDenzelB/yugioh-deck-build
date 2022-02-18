@@ -56,5 +56,5 @@ export async function searchCards(name) {
 
   const json = await response.json();
 
-  return JSON.stringify(json);
+  return json.data.name;
 }
