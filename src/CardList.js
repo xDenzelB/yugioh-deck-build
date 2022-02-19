@@ -7,15 +7,15 @@ export default function CardList({ cards, refreshCardList, isOnCardList }) {
   return (
     <div className='play-card-list'>
       {
-        cards.map((playCard, i) => location.pathname.includes('name')
-          ? <Cards key={playCard.name + i}
-            cards={cards}
+        cards.map((card, i) => location.pathname.includes('SearchPage')
+          ? <Cards key={card.name + i}
+            card={card}
             isOnCardList={isOnCardList}
             refreshCardList={refreshCardList} />
           : <CardDeckItem
-            key={cards.name}
+            key={card.name}
             refreshCardList={refreshCardList}
-            cards={cards} />)
+            card={card} />)
       }
     </div>
   );

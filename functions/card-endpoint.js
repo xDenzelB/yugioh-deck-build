@@ -3,9 +3,9 @@ require('dotenv').config();
 
 
 exports.handler = async (event) => {
-  const searchName = event.queryStringParameters.name;
+  const { name, num, offset } = event.queryStringParameters;
 
-  const URL = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${searchName}`;
+  const URL = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${name}&num${num}&offset${offset}`;
 
   try {
     const response = await fetch(URL);

@@ -1,17 +1,18 @@
 import React from 'react';
+import './App.css';
 import { addToCardsList } from './services/fetch-utils';
 
-export default function Cards({ cards, refreshCardList, isOnCardList }) {
-  const hasCard = isOnCardList(cards.id);
+export default function Cards({ card, refreshCardList, isOnCardList }) {
+  const hasCard = isOnCardList(card.id);
 
   async function handleClick() {
     if (!hasCard) {
       const cardListItem = {
-        name: cards.name,
-        api_id: cards.id,
-        type: cards.type,
-        image: cards.image_url_small,
-        description: cards.desc,
+        name: card.name,
+        api_id: card.id,
+        type: card.type,
+        image: card.card_image.id,
+        description: card.desc,
       };
       await addToCardsList(cardListItem);
       await refreshCardList();
@@ -24,10 +25,10 @@ export default function Cards({ cards, refreshCardList, isOnCardList }) {
       className={`card-item ${hasCard ? 'currentCard' : ''}`}>
 
       <h1>{hasCard && '❤️'}</h1>
-      <h3>{cards.name}</h3>
-      <p>{cards.desc}</p>
+      <h3>{card.name}</h3>
+      <p>{card.desc}</p>
       <p>
-        <img src={cards.image_url_small ? `https://storage.googleapis.com/ygoprodeck.com/pics_small/${cards.image_url_small}` : 'https://www.placebear.com/200/300'} />
+        <img src={`https://storage.googleapis.com/ygoprodeck.com/pics/${card.id}.jpg`} />
       </p>
 
     </div>
