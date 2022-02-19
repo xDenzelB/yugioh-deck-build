@@ -1,25 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CardList from './CardList';
 import { getCardsList, searchCards } from './services/fetch-utils';
 
 export default function SearchPage() {
   const [name, setName] = useState('');
-  const [results, setResults] = useState([]);
-  const [cardList, setCardList] = useState([]);
+  const [cards, setCards] = useState([]);
+//   const [page, setPage] = useState(1);
+//   const perPage = 20;
+
+//   async function fetch() {
+//     const from = page * perPage - perPage;
+//     const to = page * perPage;
+//     const playingCards = await searchCards;
+//   }
 
   async function handleCardSubmit(e) {
     e.preventDefault();
-    const cards = await searchCards(name);
+    const allCards = await searchCards(name);
 
-    setResults(cards);
+    setCards(allCards);
       
   }
 
   async function refreshCardList() {
     const personalCards = await getCardsList();
 
-    setCardList(personalCards);
+    setCards(personalCards);
   }
+
+  useEffect(() => {
+    refreshCardList();
+  }, []);
+
+  function isOnCardList(api_id) {
+    const match = cards.find(item => Number(item.api_id) === Number(api_id));
+
+    return Boolean(match);
+  }
+  console.log(cards);
   return (
     <div>
       <form onSubmit={handleCardSubmit}>
@@ -29,7 +47,7 @@ export default function SearchPage() {
       </form>
       <section>
           Your results:
-        <CardList cards={results} />
+        <CardList cards={cards} isOnCardList={isOnCardList} refreshCardList={refreshCardList} />
       </section>
     </div>
   );

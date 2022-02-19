@@ -41,7 +41,7 @@ export async function getCardsList() {
 
   return checkError(response);
 }
-export async function useCard(id) {
+export async function playCard(id) {
   const response = await client 
     .from('yugioh_cards')
     .update({ in_deck: true })
@@ -51,10 +51,10 @@ export async function useCard(id) {
   return checkError(response);
 }
 
-export async function searchCards(name) {
-  const response = await fetch(`/.netlify/functions/card-endpoint?name=${name}`);
+export async function searchCards(name, num, offset) {
+  const response = await fetch(`/.netlify/functions/card-endpoint?name=${name}&num=${num}&offset=${offset}`);
 
   const json = await response.json();
 
-  return json.data.name;
+  return json.data.data;
 }
