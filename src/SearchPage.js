@@ -5,16 +5,20 @@ import { getCardsList, searchCards } from './services/fetch-utils';
 export default function SearchPage() {
   const [name, setName] = useState('');
   const [cards, setCards] = useState([]);
+  const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const perPage = 3;
+  const num = perPage;
+  const offset = perPage * page;
 
 
   async function handleCardSubmit(e) {
     e.preventDefault();
-    const card = await searchCards(name);
+    const card = await searchCards(name, num, offset);
 
-    setCards(card);
+    setResults(card);
       
+    await refreshCardList();
   }
 
   async function refreshCardList() {
@@ -24,17 +28,9 @@ export default function SearchPage() {
   }
 
   useEffect(() => {
-    async function fetch() {
-      const num = perPage;
-      const offset = perPage * (page - 1);
-      const playingCards = await searchCards(num, offset);
-    
-      setCards(playingCards);
-    }
-    fetch();
+  
     refreshCardList();
-    
-  }, [page]);
+  }, []);
 
   function isOnCardList(api_id) {
     const match = cards.find(item => Number(item.api_id) === Number(api_id));
@@ -54,7 +50,7 @@ export default function SearchPage() {
       </form>
       <section>
           Your results:
-        <CardList cards={cards} isOnCardList={isOnCardList} refreshCardList={refreshCardList} />
+        <CardList cards={results} isOnCardList={isOnCardList} refreshCardList={refreshCardList} />
       </section>
     </div>
   );

@@ -32,10 +32,10 @@ function App() {
             currentUser &&
             <ul>
               <li>
-                <NavLink activeClassName='active-class' to='/SearchPage'>Search Cards</NavLink>
+                <NavLink className='searching' activeClassName='active-class' to='/SearchPage'>Search Cards</NavLink>
               </li>
               <li>
-                <NavLink activeClassName='active-class' to='/CardDeckPage'>Card Deck</NavLink>
+                <NavLink className='page-card' activeClassName='active-class' to='/CardDeckPage'>Card Deck</NavLink>
               </li>
               <li>
                 <button on onClick={handleLogout}>Logout</button>

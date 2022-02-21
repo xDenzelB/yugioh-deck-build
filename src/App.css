@@ -40,7 +40,7 @@
 .card-item {
   width: 300px;
   min-height: 500px;
-  background-color: lightblue;
+  background-color: rgb(170, 170, 170);
   margin: 10px;
   text-align: center;
   display: flex;
@@ -48,6 +48,11 @@
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.card-item:hover {
+  opacity: 1;
 }
 
 .card-item img {
@@ -56,7 +61,7 @@
 .cards-item {
   width: 300px;
   min-height: 500px;
-  background-color: lightblue;
+  background-color: rgb(170, 170, 170);
   margin: 10px;
   text-align: center;
   display: flex;
@@ -64,6 +69,11 @@
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.cards-item:hover {
+  opacity: 1;
 }
 
 .cards-item img {
@@ -75,3 +85,22 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* .active-class {
+background-color: black;
+color: white;
+font-size: 3rem;
+} */
+
+.active-class:hover {
+  background-color: white;
+  color: black;
+}
+
+.page-card, .searching {
+  background-color: black;
+color: white;
+font-size: 2.5rem;
+border-radius: 6px;
+}
+
