@@ -53,6 +53,22 @@
 .card-item img {
   width: 200px;
 }
+.cards-item {
+  width: 300px;
+  min-height: 500px;
+  background-color: lightblue;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.cards-item img {
+  width: 200px;
+}
 
 .play-card-list{
   display: flex;

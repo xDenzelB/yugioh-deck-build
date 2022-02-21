@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardList from './CardList';
 import { getCardsList } from './services/fetch-utils';
 
@@ -10,6 +10,10 @@ export default function CardDeckPage() {
 
     setCards(personalCards);
   }
+
+  useEffect(() => {
+    refreshCardList();
+  }, []);
   return (
     <div>
       <h1>My Cards</h1>
