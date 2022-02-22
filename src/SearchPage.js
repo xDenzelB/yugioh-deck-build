@@ -27,6 +27,7 @@ export default function SearchPage() {
     setCards(personalCards);
   }
 
+
   useEffect(() => {
   
     refreshCardList();
@@ -42,8 +43,10 @@ export default function SearchPage() {
     <div>
       <h1>Make a Deck!</h1>
       <h2>Current Page {page}</h2>
-      <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous</button>
-      <button onClick={() => setPage(page + 1)}>Next</button>
+      <button disabled={page <= 1} onClick={(e) => {setPage(page - 1);
+        handleCardSubmit(e);}}>Previous</button>
+      <button onClick={(e) => {setPage(page + 1);
+        handleCardSubmit(e); }}>Next</button>
       <form onSubmit={handleCardSubmit}>
         <input value={name} onChange={e => setName(e.target.value)} />
         <button>Search by Name</button>
