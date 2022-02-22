@@ -5,7 +5,7 @@ require('dotenv').config();
 exports.handler = async (event) => {
   const { name, num, offset } = event.queryStringParameters;
 
-  const URL = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${name}&num${num}&offset${offset}`;
+  const URL = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${name}&num=${num}&offset=${offset}`;
 
   try {
     const response = await fetch(URL);
@@ -17,7 +17,7 @@ exports.handler = async (event) => {
       body: json
     };
   } catch (error) {
-    console.log(error);
+    
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed fetching data' }),

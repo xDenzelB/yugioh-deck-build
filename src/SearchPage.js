@@ -9,7 +9,7 @@ export default function SearchPage() {
   const [page, setPage] = useState(1);
   const perPage = 3;
   const num = perPage;
-  const offset = perPage * page;
+  const offset = perPage * (page - 1);
 
 
   async function handleCardSubmit(e) {
@@ -37,9 +37,10 @@ export default function SearchPage() {
 
     return Boolean(match);
   }
-  console.log('My Cards', cards);
+  
   return (
     <div>
+      <h1>Make a Deck!</h1>
       <h2>Current Page {page}</h2>
       <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous</button>
       <button onClick={() => setPage(page + 1)}>Next</button>
@@ -49,7 +50,7 @@ export default function SearchPage() {
 
       </form>
       <section>
-          Your results:
+        <p>Your results:</p>
         <CardList cards={results} isOnCardList={isOnCardList} refreshCardList={refreshCardList} />
       </section>
     </div>

@@ -4,7 +4,7 @@ import { addToCardsList } from './services/fetch-utils';
 
 export default function Cards({ card, refreshCardList, isOnCardList }) {
   const hasCard = isOnCardList(card.id);
-  console.log('Card', hasCard);
+  
   async function handleClick() {
     if (!hasCard) {
       const cardListItem = {
